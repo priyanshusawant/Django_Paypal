@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ecom.apps.Ecomconfig',
+    'ecom.apps.EcomConfig',
     'paypal.standard.ipn',
     'django.contrib.admin',
     'django.contrib.auth',
