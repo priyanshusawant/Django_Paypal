@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--k#&ax9xcd+3#963qgcr%&+lc#2)^2hmmd%13kbc%m086r1aws
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -128,4 +128,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PAYPAL_TEST = True
 
-PAYPAL_RECEIVER_EMAIL = 'sandbox@gmail.com'
+PAYPAL_RECEIVER_EMAIL = 'sb-pypbi27865477@business.example.com'
+
+CSRF_TRUSTED_ORIGINS = ['https://0dd9-103-81-193-38.ngrok-free.app/']
+
+HOST_NAME='https://0dd9-103-81-193-38.ngrok-free.app/'

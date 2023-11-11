@@ -1,6 +1,7 @@
 import uuid
 
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from paypal.standard.forms import PayPalPaymentsForm 
 from django.conf import settings
@@ -16,7 +17,7 @@ def home(request):
         'invoice': str(uuid.uuid4()),
         'currency_code': 'USD',
         'notify_url': f'http://{host}{reverse("paypal-ipn")}',
-        'return_url': f'http://{host}{reverse("paypal-reverse")}',
+        'return_url': f'http://{host}{reverse("paypal-return")}',
         'cancel_return': f'http://{host}{reverse("paypal-cancel")}',
     }
     form = PayPalPaymentsForm(initial= paypal_dict)
@@ -24,3 +25,11 @@ def home(request):
         'form':form
     }
     return render(request, 'home.html', context)
+
+def paypal_return(request):
+    messages.success(request, 'You\'ve successfully made a payment!')
+    return redirect('home')
+
+def paypal_cancel(request):
+    messages.error(request, 'Your order has been cancelled.')
+    return redirect('home')
